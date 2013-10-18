@@ -1,31 +1,19 @@
-<<<<<<< HEAD
-source 'https://rubygems.org'
-
-gem 'rails', '3.2.7'
-=======
 source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.13'
 gem 'rack', '~> 1.4.5'
->>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-<<<<<<< HEAD
-gem 'mysql2'
-
-gem 'json'
-=======
 group :production do
   gem 'mysql2'
   gem 'pg'
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'mysql2'
 end
->>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -54,9 +42,6 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-<<<<<<< HEAD
-# gem 'ruby-debug'
-=======
 # gem 'debugger'
 
 # This version needs to be hardcoded for OpenShift compatibility
@@ -64,4 +49,3 @@ gem 'thor', '= 0.14.6'
 
 # This needs to be installed so we can run Rails console on OpenShift directly
 gem 'minitest'
->>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116
