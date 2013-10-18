@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Ghazi::Application.configure do
+=======
+RailsApp::Application.configure do
+>>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116
   # Settings specified here will take precedence over those in config/application.rb
 
   # The test environment is used exclusively to run your application's

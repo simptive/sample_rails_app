@@ -13,6 +13,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+<<<<<<< HEAD
 /.project
 /nbproject
 /*.*~
+=======
+.project
+>>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116

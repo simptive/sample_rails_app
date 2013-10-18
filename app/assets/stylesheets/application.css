@@ -9,7 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+<<<<<<< HEAD
  *= require_tree
  *= require unicorn/bootstrap.min
  *= require unicorn/unicorn.blue
+=======
+ *= require_tree .
+>>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116
  */
