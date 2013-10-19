@@ -4,8 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-<<<<<<< HEAD
-Ghazi::Application.load_tasks
-=======
 RailsApp::Application.load_tasks
->>>>>>> 692dfcb67b03d88566c34c96603ef446c2608116
