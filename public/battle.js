@@ -1695,7 +1695,7 @@ var HurtJudge=(function(){
 	function HurtJudge(){}
 	__class(HurtJudge,'battle.damage.HurtJudge');
 	HurtJudge.calc=function(attacker,beAttack,skill,result){ ///***
-		if(attacker.f_as_miss && skill.type !=3){
+		if(attacker.camp==2 || (attacker.f_as_miss && skill.type !=3)){
 			result.type=3;
 			result.value=0;
 			return;
