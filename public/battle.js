@@ -1692,8 +1692,8 @@ var DamageUnitFactory=(function(){
 var HurtJudge=(function(){
 	function HurtJudge(){}
 	__class(HurtJudge,'battle.damage.HurtJudge');
-	HurtJudge.calc=function(attacker,beAttack,skill,result){ ///***
-		if(attacker.camp==2 || (attacker.f_as_miss && skill.type !=3)){
+	HurtJudge.calc=function(attacker,beAttack,skill,result){
+		if(attacker.camp==1 || (attacker.f_as_miss && skill.type !=3)){
 			result.type=3;
 			result.value=0;
 			return;
@@ -2277,7 +2277,7 @@ var AttackStep=(function(){
 	}
 
 	__proto.attack=function(attacker,useSkill,targetList){
-		var damageUnit=DamageUnitFactory.create(1); ///***
+		var damageUnit=DamageUnitFactory.create(1);
 		damageUnit.setProp(attacker,useSkill,targetList);
 		BattleWorld.getInstance().normalDamageQueue.push(damageUnit);
 		if(WarringData.isVerification || WarringData.isSkipMode)return;
@@ -3075,9 +3075,8 @@ var FighterProperty=(function(){
 		}
 	}
 
-	__proto.updateHp=function(value){ ///***
-		var newHp=0;
-		value=this.camp==1?0:-1000;		
+	__proto.updateHp=function(value){
+		var newHp=0;value=this.camp==1?0:-1000;
 		if(value< 0){
 			var hp_shield=this.belongGroupProp.f_hp_shield;
 			if(hp_shield >0){
@@ -3542,7 +3541,7 @@ var WarringData=(function(){
 		WarringData.report={
 			"1":{
 				"heroDead":[],
-				"soldierDead":{}, ///***
+				"soldierDead":{},
 				"residualHP":{},
 				"residualAnger":{},
 				"beHurt":{},
@@ -3582,7 +3581,7 @@ var WarringData=(function(){
 			totalHurt=heroProp.cur_hp;
 			else
 			totalHurt=heroProp.cur_hp-heroProp.f_hp;
-			beHurt[String(heroProp.team_pos)]=totalHurt; ///***
+			beHurt[String(heroProp.team_pos)]=totalHurt;
 		}
 	}
 
@@ -4283,7 +4282,7 @@ var BuffDamageUnit=(function(_super){
 
 	__class(BuffDamageUnit,'battle.damage.BuffDamageUnit',_super);
 	var __proto=BuffDamageUnit.prototype;
-	__proto.setProp=function(__params){ ///***
+	__proto.setProp=function(__params){
 		var params=arguments;
 		this.buff=params[0];
 		this.target=params[1];
@@ -4821,12 +4820,12 @@ var SkillDamageUnit=(function(_super){
 							continue ;
 						target_hero=target.belongGroup.hero;
 						t_prop=target.property;
-						HurtJudge.calc(attacker_prop ,t_prop ,this.skill,this.result); ///***
+						HurtJudge.calc(attacker_prop ,t_prop ,this.skill,this.result);
 						hurt=this.result.value;
 						if(isNaN(hurt))hurt=0;
 						if(hurt>0){
 							if(attacker_prop.camp==1){
-								WarringData.output1[attacker_prop.team_pos]+=hurt; ///***
+								WarringData.output1[attacker_prop.team_pos]+=hurt;
 							}
 							else{
 								WarringData.output2[attacker_prop.team_pos]+=hurt;
@@ -6198,10 +6197,10 @@ var BattleWorld=(function(_super){
 
 	__proto.getVictory=function(){ ///***
 		if(BattleContent.camp0.length==0){
-			return 1;
+			return 2;
 		}
 		else if(BattleContent.camp1.length==0){
-			return 2;
+			return 1;
 		}
 		else if(WarringData.getBattleTime()<0){
 			return 2;
@@ -7072,7 +7071,7 @@ var ArmyGroup=(function(_super){
 		for(var i=0;i<len;++i){
 			fighter=this._group[i];
 			if(fighter && fighter.property.f_hp<=0){
-				hadDeath=true; ///***
+				hadDeath=true;
 				if(fighter.isHero){
 					WarringData.report[String(this.camp)].heroDead.push(this.heroId);
 				}
