@@ -1,7 +1,5 @@
 
 (function(window,document,Laya){
-	console.log("<<<< Injection Done! >>>>");
-
 	var __un=Laya.un,__uns=Laya.uns,__static=Laya.static,__class=Laya.class,__getset=Laya.getset,__newvec=Laya.__newvec;
 
 	var Animation=laya.display.Animation,ArmyGroupInfo=shell.model.data.battle.ArmyGroupInfo,BaseSprite=framework.mvc.view.BaseSprite;
