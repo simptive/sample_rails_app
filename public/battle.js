@@ -101,7 +101,7 @@ var BattleContent=(function(){
 
 	BattleContent.addToRow=function(ag,gridX){
 		var vec=BattleContent.getRows(gridX);
-		framework.assert(vec.indexOf(ag)==-1 ,"第一行里已有军团"+ag.nickName+",怎么还往里添加?");
+		framework.assert(vec.indexOf(ag)==-1 ,"ç¬¬ä¸€è¡Œé‡Œå·²æœ‰å†›å›¢"+ag.nickName+",æ€Žä¹ˆè¿˜å¾€é‡Œæ·»åŠ ?");
 		vec.push(ag);
 	}
 
@@ -410,7 +410,7 @@ var BattleController=(function(){
 	var __proto=BattleController.prototype;
 	__proto.enable=function(){
 		EventCenter.add("war_result_export",this,this.onWarResult);
-		EventCenter.add("war_init",this,this.onWarStart); ///***
+		EventCenter.add("war_init",this,this.onWarStart);
 	}
 
 	__proto.disable=function(){
@@ -484,7 +484,7 @@ var FSMEvent=(function(){
 
 
 /**
-*军团移动逻辑
+*å†›å›¢ç§»åŠ¨é€»è¾‘
 *@author fenglijun
 *
 */
@@ -494,13 +494,13 @@ var MoveControl=(function(){
 		this.target=null;
 		this.isMoving=false;
 		this.totalTime=0;
-		//移动需要的总时间,帧
+		//ç§»åŠ¨éœ€è¦çš„æ€»æ—¶é—´,å¸§
 		this.time=0;
-		//当前的时间
+		//å½“å‰çš„æ—¶é—´
 		this.oldPoint=null;
-		//移动前的原始坐标
+		//ç§»åŠ¨å‰çš„åŽŸå§‹åæ ‡
 		this.destPoint=null;
-		//移动到的新坐标
+		//ç§»åŠ¨åˆ°çš„æ–°åæ ‡
 		this.onMoveEnd=null;
 		this._caller=null;
 		this.target=target;
@@ -1628,7 +1628,7 @@ var DamageQueue=(function(){
 	}
 
 	__proto.remove=function(unit){
-		framework.assert(this._queue.indexOf(unit)==unit.childIndex,"擦,神马情况,缓存的索引值和实际的不一致....");
+		framework.assert(this._queue.indexOf(unit)==unit.childIndex,"æ“¦,ç¥žé©¬æƒ…å†µ,ç¼“å­˜çš„ç´¢å¼•å€¼å’Œå®žé™…çš„ä¸ä¸€è‡´....");
 		this._dic.remove(unit.id);
 		if(unit.childIndex< this._queue.length)
 			this._queue[unit.childIndex]=null;
@@ -1684,7 +1684,7 @@ var DamageUnitFactory=(function(){
 
 
 /**
-*伤害计算
+*ä¼¤å®³è®¡ç®—
 *@author fenglijun
 *
 */
@@ -1964,7 +1964,7 @@ var FighterFactory=(function(){
 
 
 /**
-*战斗音效管理
+*æˆ˜æ–—éŸ³æ•ˆç®¡ç†
 *@author MLL
 *
 */
@@ -1973,14 +1973,14 @@ var BattleSound=(function(){
 	function BattleSound(){
 		this.CHECKTIME=2;
 		/**
-		*正在战斗的军团数大于这个值时不播放移动音效
+		*æ­£åœ¨æˆ˜æ–—çš„å†›å›¢æ•°å¤§äºŽè¿™ä¸ªå€¼æ—¶ä¸æ’­æ”¾ç§»åŠ¨éŸ³æ•ˆ
 		*/
 		this.FIGHT_NUM=4;
 		/**
-		*群攻数量
+		*ç¾¤æ”»æ•°é‡
 		*/
 		this.GROUP_NUM=14;
-		/**移动中的兵种 */
+		/**ç§»åŠ¨ä¸­çš„å…µç§ */
 		this.moveSoldier=null;
 		this.waitFightSound=null;
 		this.waitBeAtkSound=null;
@@ -2020,7 +2020,7 @@ var BattleSound=(function(){
 	}
 
 	/**
-	*战斗对象改变状态
+	*æˆ˜æ–—å¯¹è±¡æ”¹å˜çŠ¶æ€
 	*@param fighter
 	*/
 	__proto.changeState=function(fighter){
@@ -2048,7 +2048,7 @@ var BattleSound=(function(){
 	}
 
 	/**
-	*某种类型的兵种开始移动
+	*æŸç§ç±»åž‹çš„å…µç§å¼€å§‹ç§»åŠ¨
 	*@param id
 	*
 	*/
@@ -2075,7 +2075,7 @@ var BattleSound=(function(){
 	}
 
 	/**
-	*有对象停止移动
+	*æœ‰å¯¹è±¡åœæ­¢ç§»åŠ¨
 	*@param id
 	*/
 	__proto.stopMove=function(soldierType){
@@ -2088,7 +2088,7 @@ var BattleSound=(function(){
 	}
 
 	/**
-	*播放移动音效
+	*æ’­æ”¾ç§»åŠ¨éŸ³æ•ˆ
 	*@param soundCfg
 	*/
 	__proto.playMoveSound=function(soundCfg){
@@ -2110,7 +2110,7 @@ var BattleSound=(function(){
 	}
 
 	/**
-	*检测声音是否需要播放
+	*æ£€æµ‹å£°éŸ³æ˜¯å¦éœ€è¦æ’­æ”¾
 	*/
 	__proto.checkSound=function(){
 		var s;
@@ -2168,7 +2168,7 @@ var BattleSound=(function(){
 	}
 
 	/**
-	*进攻声音
+	*è¿›æ”»å£°éŸ³
 	*@param id
 	*/
 	__proto.addFight=function(fighter){
@@ -2688,7 +2688,7 @@ var ArmyGroupProperty=(function(){
 
 
 /**
-*buff 负责对目标添加和减少值
+*buff è´Ÿè´£å¯¹ç›®æ ‡æ·»åŠ å’Œå‡å°‘å€¼
 *@author fenglijun
 *
 */
@@ -2778,22 +2778,22 @@ var Buff=(function(){
 
 
 /**
-*buff影响战斗逻辑的状态
+*buffå½±å“æˆ˜æ–—é€»è¾‘çš„çŠ¶æ€
 *@author fenglijun
 *
 */
 //class battle.struct.BuffStatus
 var BuffStatus=(function(){
 	function BuffStatus(){
-		/**是否播放受击动作 >0为不播放**/
+		/**æ˜¯å¦æ’­æ”¾å—å‡»åŠ¨ä½œ >0ä¸ºä¸æ’­æ”¾**/
 		this.attacked_react=0;
-		/**是否可以移动 >0为不能移动**/
+		/**æ˜¯å¦å¯ä»¥ç§»åŠ¨ >0ä¸ºä¸èƒ½ç§»åŠ¨**/
 		this.move=0;
-		/**是否打断技能>0为打断**/
+		/**æ˜¯å¦æ‰“æ–­æŠ€èƒ½>0ä¸ºæ‰“æ–­**/
 		this.break_act=0;
-		/**不能使用技能,除普通攻击外>0不能使用**/
+		/**ä¸èƒ½ä½¿ç”¨æŠ€èƒ½,é™¤æ™®é€šæ”»å‡»å¤–>0ä¸èƒ½ä½¿ç”¨**/
 		this.skill=0;
-		/**是否可以普通攻击 >0不能使用**/
+		/**æ˜¯å¦å¯ä»¥æ™®é€šæ”»å‡» >0ä¸èƒ½ä½¿ç”¨**/
 		this.attack=0;
 	}
 
@@ -2808,7 +2808,7 @@ var BuffStatus=(function(){
 
 
 /**
-*战斗单位属性
+*æˆ˜æ–—å•ä½å±žæ€§
 *@author fenglijun
 *
 */
@@ -2817,109 +2817,111 @@ var FighterProperty=(function(){
 	function FighterProperty(){
 		this.index=0;
 		this.pos=0;
-		//军团中位置
+		//å†›å›¢ä¸­ä½ç½®
 		this.team_pos=null;
-		//军团中位置 字符串,对应服务器
+		//å†›å›¢ä¸­ä½ç½® å­—ç¬¦ä¸²,å¯¹åº”æœåŠ¡å™¨
 		this.elementId=null;
 		this.elementType=null;
-		//英雄或士兵
+		//è‹±é›„æˆ–å£«å…µ
 		this.name=null;
 		this.belongHeroId=null;
 		this.belongGroupId=0;
 		this.belongGroupProp=null;
 		this.camp=0;
 		this.status=0;
-		//buff状态
+		//buffçŠ¶æ€
 		this.lv=1;
 		this.grade=0;
-		//等阶 士兵属性
+		//ç­‰é˜¶ å£«å…µå±žæ€§
 		this.military_lv=0;
 		this.isHero=false;
 		this.mstar=0;
 		// public var buffs:Vector.<Buff>;
 		this.buffState=null;
+		this.injuryBearing=0;
+		this.healHp=0;
 		this.noskillTime=0;
 		this.id=null;
-		/**统率**/
+		/**ç»ŸçŽ‡**/
 		this.cmd=0;
-		/**力量**/
+		/**åŠ›é‡**/
 		this.str=0;
-		/**智力**/
+		/**æ™ºåŠ›**/
 		this.int_=0;
-		/**防御**/
+		/**é˜²å¾¡**/
 		this.def=0;
-		/**体质**/
+		/**ä½“è´¨**/
 		this.con=0;
-		/**物理攻击**/
+		/**ç‰©ç†æ”»å‡»**/
 		this.atk_p=0;
-		/**物理防御**/
+		/**ç‰©ç†é˜²å¾¡**/
 		this.def_p=0;
-		/**魔法攻击**/
+		/**é­”æ³•æ”»å‡»**/
 		this.atk_m=0;
-		/**魔法防御**/
+		/**é­”æ³•é˜²å¾¡**/
 		this.def_m=0;
 		/**
-		*当前血量，就是服务器回来的hp,因hp另有用，hp强制==hp_max 所以增加此字段
+		*å½“å‰è¡€é‡ï¼Œå°±æ˜¯æœåŠ¡å™¨å›žæ¥çš„hp,å› hpå¦æœ‰ç”¨ï¼Œhpå¼ºåˆ¶==hp_max æ‰€ä»¥å¢žåŠ æ­¤å­—æ®µ
 		*/
 		this.cur_hp=0;
-		/**生命**/
+		/**ç”Ÿå‘½**/
 		this.hp=0;
-		/**最大生命**/
+		/**æœ€å¤§ç”Ÿå‘½**/
 		this.hp_max=0;
-		/**暴击**/
+		/**æš´å‡»**/
 		this.crit=0;
-		/**抗暴击**/
+		/**æŠ—æš´å‡»**/
 		this.crit_r=0;
-		/**暴击伤害**/
+		/**æš´å‡»ä¼¤å®³**/
 		this.crit_dmg=1;
-		/**格挡**/
+		/**æ ¼æŒ¡**/
 		this.aegis=0;
-		/**破格挡**/
+		/**ç ´æ ¼æŒ¡**/
 		this.aegis_r=0;
-		/**闪避**/
+		/**é—ªé¿**/
 		this.hit_r=0;
-		/**命中**/
+		/**å‘½ä¸­**/
 		this.hit=0;
-		/**攻击间隔**/
+		/**æ”»å‡»é—´éš”**/
 		this.spd_a=NaN;
-		/**移动速度**/
+		/**ç§»åŠ¨é€Ÿåº¦**/
 		this.spd_m=NaN;
-		/**攻击距离**/
+		/**æ”»å‡»è·ç¦»**/
 		this.ran_h=0;
-		/**攻击路线**/
+		/**æ”»å‡»è·¯çº¿**/
 		this.ran_v=0;
-		/**弹道**/
+		/**å¼¹é“**/
 		this.tra=0;
-		/**攻击类型**/
+		/**æ”»å‡»ç±»åž‹**/
 		this.atk_type=null;
-		/**技能**/
+		/**æŠ€èƒ½**/
 		this.sk1id=0;
-		/**技能**/
+		/**æŠ€èƒ½**/
 		this.sk2id=0;
-		/**技能**/
+		/**æŠ€èƒ½**/
 		this.sk3id=0;
-		/**技能**/
+		/**æŠ€èƒ½**/
 		this.sk4id=0;
-		/**怒气**/
+		/**æ€’æ°”**/
 		this.anger=0;
 		this.anger_max=0;
-		/**对敌伤害**/
+		/**å¯¹æ•Œä¼¤å®³**/
 		this.dmg=1;
-		/**受到物理伤害**/
+		/**å—åˆ°ç‰©ç†ä¼¤å®³**/
 		this.ph=1;
-		/**受到法术伤害**/
+		/**å—åˆ°æ³•æœ¯ä¼¤å®³**/
 		this.mh=1;
-		/**吸血比例**/
+		/**å¸è¡€æ¯”ä¾‹**/
 		this.vampire=1;
-		/**吸收伤害比例**/
+		/**å¸æ”¶ä¼¤å®³æ¯”ä¾‹**/
 		this.ab=1;
-		/**免疫**/
+		/**å…ç–«**/
 		this.inbuff=1;
-		/**除大招外miss**/
+		/**é™¤å¤§æ‹›å¤–miss**/
 		this.as_miss=1;
-		/**近战普通攻击伤害**/
+		/**è¿‘æˆ˜æ™®é€šæ”»å‡»ä¼¤å®³**/
 		this.melee_dmg=1;
-		/**远程普通攻击伤害**/
+		/**è¿œç¨‹æ™®é€šæ”»å‡»ä¼¤å®³**/
 		this.dist_dmg=1;
 		this.dmghero=0;
 		this.f_dmghero=0;
@@ -2927,61 +2929,61 @@ var FighterProperty=(function(){
 		this.f_dmgelse=0;
 		this.heroConfig=null;
 		this.soldierConfig=null;
-		/**物理攻击**/
+		/**ç‰©ç†æ”»å‡»**/
 		this.f_atk_p=0;
-		/**物理防御**/
+		/**ç‰©ç†é˜²å¾¡**/
 		this.f_def_p=0;
-		/**魔法攻击**/
+		/**é­”æ³•æ”»å‡»**/
 		this.f_atk_m=0;
-		/**魔法防御**/
+		/**é­”æ³•é˜²å¾¡**/
 		this.f_def_m=0;
 		this._f_hp=0;
-		/**暴击**/
+		/**æš´å‡»**/
 		this.f_crit=0;
-		/**暴击伤害**/
+		/**æš´å‡»ä¼¤å®³**/
 		this.f_crit_dmg=0;
-		/**抗暴击**/
+		/**æŠ—æš´å‡»**/
 		this.f_crit_r=0;
-		/**格挡**/
+		/**æ ¼æŒ¡**/
 		this.f_aegis=0;
-		/**破格挡**/
+		/**ç ´æ ¼æŒ¡**/
 		this.f_aegis_r=0;
-		/**闪避**/
+		/**é—ªé¿**/
 		this.f_hit_r=0;
-		/**命中**/
+		/**å‘½ä¸­**/
 		this.f_hit=0;
-		/**攻击间隔**/
+		/**æ”»å‡»é—´éš”**/
 		this.f_spd_a=NaN;
-		/**移动速度**/
+		/**ç§»åŠ¨é€Ÿåº¦**/
 		this.f_spd_m=NaN;
 		this._f_anger=0;
 		this.f_hp_max=0;
-		/**对敌伤害**/
+		/**å¯¹æ•Œä¼¤å®³**/
 		this.f_dmg=0;
-		/**受到物理伤害**/
+		/**å—åˆ°ç‰©ç†ä¼¤å®³**/
 		this.f_ph=1;
-		/**受到法术伤害**/
+		/**å—åˆ°æ³•æœ¯ä¼¤å®³**/
 		this.f_mh=1;
-		/**吸血比例**/
+		/**å¸è¡€æ¯”ä¾‹**/
 		this.f_vampire=0;
 		this._f_ab=0;
-		/**免疫**/
+		/**å…ç–«**/
 		this.f_inbuff=0;
-		/**除大招外miss**/
+		/**é™¤å¤§æ‹›å¤–miss**/
 		this.f_as_miss=0;
-		/**近战普通攻击伤害**/
+		/**è¿‘æˆ˜æ™®é€šæ”»å‡»ä¼¤å®³**/
 		this.f_melee_dmg=0;
-		/**远程普通攻击伤害**/
+		/**è¿œç¨‹æ™®é€šæ”»å‡»ä¼¤å®³**/
 		this.f_dist_dmg=0;
 		this.non_ph=1;
 		this.f_non_ph=1;
-		//物理免疫
+		//ç‰©ç†å…ç–«
 		this.non_mh=1;
 		this.f_non_mh=1;
-		/**士兵相克加成**/
+		/**å£«å…µç›¸å…‹åŠ æˆ**/
 		this.feature={};
 		/**
-		*士兵对其他单位的最低伤害比例
+		*å£«å…µå¯¹å…¶ä»–å•ä½çš„æœ€ä½Žä¼¤å®³æ¯”ä¾‹
 		*/
 		this.dmgrate_hero=1;
 		this.noSkillBuffMap=new Dictionary();
@@ -3076,7 +3078,7 @@ var FighterProperty=(function(){
 	}
 
 	__proto.updateHp=function(value){
-		var newHp=0;value=this.camp==1?0:-1000;
+		var newHp=0;
 		if(value< 0){
 			var hp_shield=this.belongGroupProp.f_hp_shield;
 			if(hp_shield >0){
@@ -3090,6 +3092,7 @@ var FighterProperty=(function(){
 				newHp=value;
 				this.f_hp+=newHp;
 			}
+			this.injuryBearing-=newHp;
 		}
 		else{
 			if(this.f_hp+value > this.f_hp_max)
@@ -3097,11 +3100,12 @@ var FighterProperty=(function(){
 			else
 			newHp=value;
 			this.f_hp+=newHp;
+			this.healHp+=newHp;
 		}
 		WarringData.hp[this.camp]+=newHp;
 	}
 
-	//刷新总血量
+	//åˆ·æ–°æ€»è¡€é‡
 	__proto.updateAnger=function(value){
 		this.f_anger+=value;
 		if(this.f_anger > this.anger_max)
@@ -3109,7 +3113,7 @@ var FighterProperty=(function(){
 	}
 
 	/**
-	*公会科技等的加成buff
+	*å…¬ä¼šç§‘æŠ€ç­‰çš„åŠ æˆbuff
 	*@param buff
 	*
 	*/
@@ -3152,7 +3156,7 @@ var FighterProperty=(function(){
 	/**
 	*@private
 	*/
-	/**吸收伤害比例**/
+	/**å¸æ”¶ä¼¤å®³æ¯”ä¾‹**/
 	__getset(0,__proto,'f_ab',function(){
 		return this._f_ab;
 		},function(value){
@@ -3165,7 +3169,7 @@ var FighterProperty=(function(){
 	/**
 	*@private
 	*/
-	/**怒气**/
+	/**æ€’æ°”**/
 	__getset(0,__proto,'f_anger',function(){
 		return this._f_anger;
 		},function(value){
@@ -3180,7 +3184,7 @@ var FighterProperty=(function(){
 	});
 
 	/**
-	*血量百分比
+	*è¡€é‡ç™¾åˆ†æ¯”
 	*/
 	__getset(0,__proto,'hp_percent',function(){
 		return Math.floor(this.f_hp / this.f_hp_max *100);
@@ -3192,7 +3196,7 @@ var FighterProperty=(function(){
 		this._f_hp=value;
 	});
 
-	/**是否是远程单位**/
+	/**æ˜¯å¦æ˜¯è¿œç¨‹å•ä½**/
 	__getset(0,__proto,'isRemoteFighter',function(){
 		return this.ran_h >8;
 	});
@@ -3222,7 +3226,7 @@ var LordSkill=(function(){
 	}
 
 	/**
-	*领主CD的剩余时间
+	*é¢†ä¸»CDçš„å‰©ä½™æ—¶é—´
 	*@return
 	*
 	*/
@@ -3237,7 +3241,7 @@ var LordSkill=(function(){
 
 
 /**
-*被动技能
+*è¢«åŠ¨æŠ€èƒ½
 *@author fenglijun
 *
 */
@@ -3315,7 +3319,7 @@ var PassiveSkill=(function(){
 
 
 /**
-*战斗单位技能
+*æˆ˜æ–—å•ä½æŠ€èƒ½
 *@author fenglijun
 *
 */
@@ -3323,7 +3327,7 @@ var PassiveSkill=(function(){
 var SkillPool=(function(){
 	function SkillPool(master,skills,loop1,loop2){
 		this.list=null;
-		//技能队列
+		//æŠ€èƒ½é˜Ÿåˆ—
 		this.order=null;
 		this.current=0;
 		this.bigSkill=null;
@@ -3390,7 +3394,7 @@ var SkillPool=(function(){
 		this.current=Math.floor(this.current % order.length);
 		var sc=this.list[parseInt(order[this.current])];
 		if(!sc)sc=this.list[0];
-		framework.assert(sc,"当前技能为空???");
+		framework.assert(sc,"å½“å‰æŠ€èƒ½ä¸ºç©º???");
 		return sc;
 	}
 
@@ -3415,7 +3419,7 @@ var SkillPool=(function(){
 
 
 /**
-*战斗内部运转的数据缓存
+*æˆ˜æ–—å†…éƒ¨è¿è½¬çš„æ•°æ®ç¼“å­˜
 *@author fenglijun
 *
 */
@@ -3545,6 +3549,8 @@ var WarringData=(function(){
 				"residualHP":{},
 				"residualAnger":{},
 				"beHurt":{},
+				"injury":{},
+				"heal":{},
 				"output":WarringData.output1
 			},
 			"2":{
@@ -3553,6 +3559,8 @@ var WarringData=(function(){
 				"residualHP":{},
 				"residualAnger":{},
 				"beHurt":{},
+				"injury":{},
+				"heal":{},
 				"output":WarringData.output2
 			},
 			"replay":{},
@@ -3567,6 +3575,8 @@ var WarringData=(function(){
 		var list=WarringData.heroPropListCamp1.concat(WarringData.heroPropListCamp2);
 		var residualHP;
 		var beHurt;
+		var heal;
+		var injury;
 		var heroProp;
 		for(var i=0;i<list.length;++i){
 			heroProp=list[i];
@@ -3574,6 +3584,8 @@ var WarringData=(function(){
 			residualHP[heroProp.team_pos]=heroProp.f_hp > heroProp.hp ? heroProp.hp :heroProp.f_hp;
 			WarringData.report[heroProp.camp.toString()].residualAnger[heroProp.team_pos]=heroProp.f_anger;
 			beHurt=WarringData.report[heroProp.camp.toString()].beHurt;
+			heal=WarringData.report[heroProp.camp.toString()].heal;
+			injury=WarringData.report[heroProp.camp.toString()].injury;
 			var totalHurt=0;
 			if(heroProp.f_hp >=heroProp.cur_hp)
 				totalHurt=0;
@@ -3582,6 +3594,8 @@ var WarringData=(function(){
 			else
 			totalHurt=heroProp.cur_hp-heroProp.f_hp;
 			beHurt[String(heroProp.team_pos)]=totalHurt;
+			injury[String(heroProp.team_pos)]=heroProp.injuryBearing;
+			heal[String(heroProp.team_pos)]=heroProp.healHp;
 		}
 	}
 
@@ -4106,7 +4120,7 @@ var FightState=(function(_super){
 
 
 /**
-*默认状态
+*é»˜è®¤çŠ¶æ€
 *@author fenglijun
 *
 */
@@ -4133,14 +4147,14 @@ var StandByState=(function(_super){
 
 
 /**
-*移动策略
+*ç§»åŠ¨ç­–ç•¥
 *@author fenglijun
 *
 */
 //class battle.control.FSM.WalkState extends battle.control.FSM.FSMState
 var WalkState=(function(_super){
 	function WalkState(content){
-		// if(armyGroup.hero )armyGroup.hero.breakSkill();//进入行走要打断技能
+		// if(armyGroup.hero )armyGroup.hero.breakSkill();//è¿›å…¥è¡Œèµ°è¦æ‰“æ–­æŠ€èƒ½
 		this.preTarget=null;
 		WalkState.__super.call(this,content);
 	}
@@ -4463,7 +4477,7 @@ var LordSkillDamageUnit=(function(_super){
 	}
 
 	/**
-	*持续需要的计算 ,如果配置有
+	*æŒç»­éœ€è¦çš„è®¡ç®— ,å¦‚æžœé…ç½®æœ‰
 	*/
 	__proto.intervalCalc=function(){
 		switch(this.skill.skid){
@@ -4657,7 +4671,7 @@ var LordSkillDamageUnit=(function(_super){
 		}
 	}
 
-	//终极净化
+	//ç»ˆæžå‡€åŒ–
 	__proto.SK12=function(valid){
 		if(!valid)return;
 		var ary;
@@ -4694,7 +4708,7 @@ var LordSkillDamageUnit=(function(_super){
 			temp.pos=0
 			temp.gridX=this.pos[0];
 			temp.gridY=this.pos[1]-EnumTile.SPACE_HEIGHT;
-			temp.name="召唤物";
+			temp.name="å¬å”¤ç‰©";
 			temp.heroId=this.skill.effect_self.target;
 			temp.heroPos=1;
 			temp.star=0;
@@ -4740,7 +4754,7 @@ var LordSkillDamageUnit=(function(_super){
 		BattleWorld.getInstance().remove(this.armyGroup);
 	}
 
-	//士气振奋
+	//å£«æ°”æŒ¯å¥‹
 	__proto.SK15=function(valid){
 		if(!valid)return;
 		var ary;
@@ -4913,7 +4927,7 @@ var SkillDamageUnit=(function(_super){
 		}
 	}
 
-	//销毁
+	//é”€æ¯
 	__proto.destruct=function(){
 		this.attacker=null;
 		this.skill=null;
@@ -5857,8 +5871,8 @@ var TileSprite=(function(_super){
 
 
 /**
-*描述45度的战斗站位场景
-*里面包含军团,特效等
+*æè¿°45åº¦çš„æˆ˜æ–—ç«™ä½åœºæ™¯
+*é‡Œé¢åŒ…å«å†›å›¢,ç‰¹æ•ˆç­‰
 *@author fenglijun
 *
 */
@@ -5988,7 +6002,7 @@ var BattleWorld=(function(_super){
 		GuideManager.instance.dispatchGuide("EnterBattle",[Datas.battleData.pk_type,Datas.battleData.pk_index],Handler.create(this,this._march,null,false));
 	}
 
-	//进攻
+	//è¿›æ”»
 	__proto._march=function(){
 		if(!this.isMarch){
 			this.isMarch=true;
@@ -6067,8 +6081,8 @@ var BattleWorld=(function(_super){
 	}
 
 	/**
-	*快进
-	*@param frame 到第几帧
+	*å¿«è¿›
+	*@param frame åˆ°ç¬¬å‡ å¸§
 	*
 	*/
 	__proto.fastForward=function(frame){
@@ -6153,7 +6167,7 @@ var BattleWorld=(function(_super){
 				ag=this._armyGroups[$each_ag];
 				ag.onEvent("standby");
 			}
-			console.info("战斗打完,共跑了帧数"+BattleUtil.currentFrame);
+			console.info("æˆ˜æ–—æ‰“å®Œ,å…±è·‘äº†å¸§æ•°"+BattleUtil.currentFrame);
 		}
 	}
 
@@ -6195,7 +6209,7 @@ var BattleWorld=(function(_super){
 		WarringData.requestVo.onOutputResult && WarringData.requestVo.onOutputResult.runWith(WarringData.report);
 	}
 
-	__proto.getVictory=function(){ ///***
+	__proto.getVictory=function(){
 		if(BattleContent.camp0.length==0){
 			return 2;
 		}
@@ -6262,7 +6276,7 @@ var BattleWorld=(function(_super){
 		ag.gridX=info.gridX;
 		ag.gridY=info.gridY;
 		ag.camp=info.camp;
-		ag.dir=info.camp==2?"front":"back"; ///***
+		ag.dir=info.camp==2?"front":"back";
 		ag.soldierId=info.soldierId;
 		ag.visible=false;
 		if(ag.soldierId){
@@ -6383,7 +6397,7 @@ var BattleWorld=(function(_super){
 
 
 /**
-*军团
+*å†›å›¢
 *@author fenglijun
 *
 */
@@ -6392,54 +6406,54 @@ var ArmyGroup=(function(_super){
 	function ArmyGroup(){
 		this._group=[];
 		this.row0=[];
-		//第一行队列 0 0 这是相对军团面向的第一行
+		//ç¬¬ä¸€è¡Œé˜Ÿåˆ— 0 0 è¿™æ˜¯ç›¸å¯¹å†›å›¢é¢å‘çš„ç¬¬ä¸€è¡Œ
 		this.row1=[];
-		//第二行队列 1 0
+		//ç¬¬äºŒè¡Œé˜Ÿåˆ— 1 0
 		this.row2=[];
-		//第三行队列 2 0
+		//ç¬¬ä¸‰è¡Œé˜Ÿåˆ— 2 0
 		this.absoluteRow0=[];
-		//这时相对坐标系的绝对行,在正向时,取的是末行,背向时,取的是首行
+		//è¿™æ—¶ç›¸å¯¹åæ ‡ç³»çš„ç»å¯¹è¡Œ,åœ¨æ­£å‘æ—¶,å–çš„æ˜¯æœ«è¡Œ,èƒŒå‘æ—¶,å–çš„æ˜¯é¦–è¡Œ
 		this.absoluteRow1=[];
 		this.absoluteRow2=[];
 		this.absRowsEmptyMap=[];
-		//记录每排队伍是否为空的缓存
+		//è®°å½•æ¯æŽ’é˜Ÿä¼æ˜¯å¦ä¸ºç©ºçš„ç¼“å­˜
 		this._camp=0;
-		//方向
+		//æ–¹å‘
 		this.info=null;
 		this.soldierId=null;
-		//携带的士兵类型
+		//æºå¸¦çš„å£«å…µç±»åž‹
 		this.soldierConfig=null;
-		//士兵配置
+		//å£«å…µé…ç½®
 		this.soldierJsonConfig=null;
-		//士兵本地配置自用
+		//å£«å…µæœ¬åœ°é…ç½®è‡ªç”¨
 		this.soldierConfigProperty=null;
-		//士兵策划配置
+		//å£«å…µç­–åˆ’é…ç½®
 		this.heroId=null;
-		//军团英雄类型
+		//å†›å›¢è‹±é›„ç±»åž‹
 		this.heroJsonConfig=null;
-		//英雄本地配置数据
+		//è‹±é›„æœ¬åœ°é…ç½®æ•°æ®
 		this.heroConfig=null;
-		//英雄策划配置
+		//è‹±é›„ç­–åˆ’é…ç½®
 		this.hero=null;
-		//英雄实体,只有一个
+		//è‹±é›„å®žä½“,åªæœ‰ä¸€ä¸ª
 		this.heroAbsRow=0;
-		//英雄所在的绝对行
+		//è‹±é›„æ‰€åœ¨çš„ç»å¯¹è¡Œ
 		this._state=null;
-		//当前状态
+		//å½“å‰çŠ¶æ€
 		this._moveControl=null;
 		this.nickName=null;
 		this.needCoverPos=false;
-		//是否需要补位标识
+		//æ˜¯å¦éœ€è¦è¡¥ä½æ ‡è¯†
 		this.needUpdatePos=false;
-		//是否需要更新站位
+		//æ˜¯å¦éœ€è¦æ›´æ–°ç«™ä½
 		this.needRecalcBounds=false;
-		//是否需要重新计算军团占位
+		//æ˜¯å¦éœ€è¦é‡æ–°è®¡ç®—å†›å›¢å ä½
 		this.buffStatus=null;
-		//buff状态,由军团下的战斗单位维护
+		//buffçŠ¶æ€,ç”±å†›å›¢ä¸‹çš„æˆ˜æ–—å•ä½ç»´æŠ¤
 		this._property=null;
 		this.defaultDir=null;
 		/**
-		*1代表是向右横向移动,-1向左横向移动 0前进
+		*1ä»£è¡¨æ˜¯å‘å³æ¨ªå‘ç§»åŠ¨,-1å‘å·¦æ¨ªå‘ç§»åŠ¨ 0å‰è¿›
 		*/
 		this.crosswiseMoveFlag=0;
 		this._destX=0;
@@ -6563,7 +6577,7 @@ var ArmyGroup=(function(_super){
 		return true;
 	}
 
-	/**转身**/
+	/**è½¬èº«**/
 	__proto.turnAround=function(){
 		if(this.crosswiseMoveFlag !=0)return;
 		this.dir=this.isFaceFornt ? "back":"front";
@@ -6730,7 +6744,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	//重置每排的队列情况
+	//é‡ç½®æ¯æŽ’çš„é˜Ÿåˆ—æƒ…å†µ
 	__proto.calcEmptyRows=function(row){
 		if(row>=0){
 			this.absRowsEmptyMap[row]=BattleUtil.isEmptyRow(this.getAbsRow(row));
@@ -6742,7 +6756,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	//头行
+	//å¤´è¡Œ
 	__proto.getHeadline=function(){
 		if(this.isFaceFornt){
 			if(!this.absRowsEmptyMap[2])return 2;
@@ -6756,7 +6770,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	//军团尾行
+	//å†›å›¢å°¾è¡Œ
 	__proto.getFootline=function(){
 		if(this.isFaceFornt){
 			if(!this.absRowsEmptyMap[0])return 0;
@@ -6773,7 +6787,7 @@ var ArmyGroup=(function(_super){
 	__proto.moveTo=function(gridX,gridY){
 		this._destX=Math.floor(gridX);
 		this._destY=Math.floor(gridY);
-		framework.assert(this.gridX !=this._destX || this.gridY !=this._destY,"怎么会移动到当前格子去?");
+		framework.assert(this.gridX !=this._destX || this.gridY !=this._destY,"æ€Žä¹ˆä¼šç§»åŠ¨åˆ°å½“å‰æ ¼å­åŽ»?");
 		this.playAction("run");
 		if(gridX > this._gridX){
 			this.crosswiseMoveFlag=1;
@@ -6846,7 +6860,7 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*获取军团移动速度
+	*èŽ·å–å†›å›¢ç§»åŠ¨é€Ÿåº¦
 	*/
 	__proto.getSpeed=function(){
 		if(this.soldierId && this.hasSolider())
@@ -6870,12 +6884,12 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*获取军团某一排的攻击范围
-	*@param row 0第一排 1第二排 2第三排
-	*@param faceFornt 根据的面向情况
-	*@param atkWidth 自定义的横向攻击距离 0为默认取士兵的
-	*@param atkHeight 自定义的纵向攻击距离 0为默认取士兵的
-	*@return 返回攻击范围矩阵
+	*èŽ·å–å†›å›¢æŸä¸€æŽ’çš„æ”»å‡»èŒƒå›´
+	*@param row 0ç¬¬ä¸€æŽ’ 1ç¬¬äºŒæŽ’ 2ç¬¬ä¸‰æŽ’
+	*@param faceFornt æ ¹æ®çš„é¢å‘æƒ…å†µ
+	*@param atkWidth è‡ªå®šä¹‰çš„æ¨ªå‘æ”»å‡»è·ç¦» 0ä¸ºé»˜è®¤å–å£«å…µçš„
+	*@param atkHeight è‡ªå®šä¹‰çš„çºµå‘æ”»å‡»è·ç¦» 0ä¸ºé»˜è®¤å–å£«å…µçš„
+	*@return è¿”å›žæ”»å‡»èŒƒå›´çŸ©é˜µ
 	*/
 	__proto.getAttackRangeByRow=function(row,faceFornt,atkWidth,atkHeight){
 		(atkWidth===void 0)&& (atkWidth=0);
@@ -6899,7 +6913,7 @@ var ArmyGroup=(function(_super){
 		return result;
 	}
 
-	/**英雄攻击范围**/
+	/**è‹±é›„æ”»å‡»èŒƒå›´**/
 	__proto.getHeroAttackRange=function(faceFornt){
 		var result=new Rectangle(this._gridX,this._gridY,this.heroConfig.ran_v,this.heroConfig.ran_h);
 		if(faceFornt){
@@ -6916,7 +6930,7 @@ var ArmyGroup=(function(_super){
 		return result;
 	}
 
-	/**获取末行的攻击范围,如果英雄也在该行,返回两者最小的横向距离**/
+	/**èŽ·å–æœ«è¡Œçš„æ”»å‡»èŒƒå›´,å¦‚æžœè‹±é›„ä¹Ÿåœ¨è¯¥è¡Œ,è¿”å›žä¸¤è€…æœ€å°çš„æ¨ªå‘è·ç¦»**/
 	__proto.getFootlineAttackRange=function(isFornt){
 		var row=this.getFootline();
 		if(row==this.heroAbsRow && !this.hasSolider()){
@@ -6925,7 +6939,7 @@ var ArmyGroup=(function(_super){
 		return this.getAttackRangeByRow(row,isFornt);
 	}
 
-	/**获取首行的攻击范围,如果英雄也在该行,返回两者最大的横向距离**/
+	/**èŽ·å–é¦–è¡Œçš„æ”»å‡»èŒƒå›´,å¦‚æžœè‹±é›„ä¹Ÿåœ¨è¯¥è¡Œ,è¿”å›žä¸¤è€…æœ€å¤§çš„æ¨ªå‘è·ç¦»**/
 	__proto.getHeadlineAttackRange=function(isFornt){
 		var row=this.getHeadline();
 		if(this.hero && this.soldierId){
@@ -6936,8 +6950,8 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*军团当前实际占用的格子矩阵,映射成Rectangle
-	*如:一个满兵的阵形是3*5在坐标0,2,位置,映射的rectangle=Rectangle(0,2,5,3)
+	*å†›å›¢å½“å‰å®žé™…å ç”¨çš„æ ¼å­çŸ©é˜µ,æ˜ å°„æˆRectangle
+	*å¦‚:ä¸€ä¸ªæ»¡å…µçš„é˜µå½¢æ˜¯3*5åœ¨åæ ‡0,2,ä½ç½®,æ˜ å°„çš„rectangle=Rectangle(0,2,5,3)
 	*@return
 	*/
 	__proto.getTileBounds=function(){
@@ -6963,9 +6977,9 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*军团当前占用的格子矩阵,映射成Rectangle
-	*对比getTileBounds,当横移的时候，该方法会占满2道
-	*如:一个满兵的阵形是3*5在坐标0,2,位置,映射的rectangle=Rectangle(0,2,5,3)
+	*å†›å›¢å½“å‰å ç”¨çš„æ ¼å­çŸ©é˜µ,æ˜ å°„æˆRectangle
+	*å¯¹æ¯”getTileBounds,å½“æ¨ªç§»çš„æ—¶å€™ï¼Œè¯¥æ–¹æ³•ä¼šå æ»¡2é“
+	*å¦‚:ä¸€ä¸ªæ»¡å…µçš„é˜µå½¢æ˜¯3*5åœ¨åæ ‡0,2,ä½ç½®,æ˜ å°„çš„rectangle=Rectangle(0,2,5,3)
 	*@return
 	*/
 	__proto.getPlaceBounds=function(){
@@ -7101,7 +7115,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	//补位操作
+	//è¡¥ä½æ“ä½œ
 	__proto.coverPosition=function(){
 		var rows;
 		var reserve;
@@ -7141,7 +7155,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	/**是否有同列敌人**/
+	/**æ˜¯å¦æœ‰åŒåˆ—æ•Œäºº**/
 	__proto.hasEnemyInSameCol=function(){
 		if(this.crosswiseMoveFlag !=0)return false;
 		var enemys=BattleContent.getEnemyGroup(this._camp);
@@ -7155,7 +7169,7 @@ var ArmyGroup=(function(_super){
 		return false;
 	}
 
-	//状态机事件入口
+	//çŠ¶æ€æœºäº‹ä»¶å…¥å£
 	__proto.onEvent=function(type){
 		if(this._state==null)return;
 		var newState=this._state.change(type);
@@ -7163,9 +7177,9 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*获取军团的所有排,默认是按正面的升序排序
-	*@param sortOptions 正面开始,还是背面开始
-	*@return 返回军团所有排
+	*èŽ·å–å†›å›¢çš„æ‰€æœ‰æŽ’,é»˜è®¤æ˜¯æŒ‰æ­£é¢çš„å‡åºæŽ’åº
+	*@param sortOptions æ­£é¢å¼€å§‹,è¿˜æ˜¯èƒŒé¢å¼€å§‹
+	*@return è¿”å›žå†›å›¢æ‰€æœ‰æŽ’
 	*
 	*/
 	__proto.getRows=function(sortOptions){
@@ -7185,9 +7199,9 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*根据受击范围,找出该军团可被攻击到的每一排
-	*@param attacker 攻击方
-	*@param beAttackRect 受击范围
+	*æ ¹æ®å—å‡»èŒƒå›´,æ‰¾å‡ºè¯¥å†›å›¢å¯è¢«æ”»å‡»åˆ°çš„æ¯ä¸€æŽ’
+	*@param attacker æ”»å‡»æ–¹
+	*@param beAttackRect å—å‡»èŒƒå›´
 	*@return
 	*
 	*/
@@ -7231,7 +7245,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	//失败
+	//å¤±è´¥
 	__proto.lost=function(){
 		this.onEvent("death");
 		if (this.info !=null && this.info.camp==2 && Datas.battleData.pk_type==4){
@@ -7255,8 +7269,8 @@ var ArmyGroup=(function(_super){
 	}
 
 	/**
-	*军团情况
-	*@return 0只有英雄 1只有士兵 2 两者都有-1空
+	*å†›å›¢æƒ…å†µ
+	*@return 0åªæœ‰è‹±é›„ 1åªæœ‰å£«å…µ 2 ä¸¤è€…éƒ½æœ‰-1ç©º
 	*/
 	__proto.checkTeamStatus=function(){
 		var result=-1;
@@ -7303,7 +7317,7 @@ var ArmyGroup=(function(_super){
 		}
 	}
 
-	//浮空
+	//æµ®ç©º
 	__proto.floating=function(){
 		if(!this.isFloating){
 			this.isFloating=true;
@@ -7400,7 +7414,7 @@ var ArmyGroup=(function(_super){
 	});
 
 	__getset(0,__proto,'isFaceFornt',function(){return this._dir=="front";});
-	/**军团目前有多少排 **/
+	/**å†›å›¢ç›®å‰æœ‰å¤šå°‘æŽ’ **/
 	__getset(0,__proto,'rowLength',function(){
 		var i=0;
 		if(!this.absRowsEmptyMap[0])i++;
@@ -7448,7 +7462,7 @@ var ArmyGroup=(function(_super){
 
 
 /**
-*战斗单位
+*æˆ˜æ–—å•ä½
 *@author fenglijun
 *
 */
@@ -7471,7 +7485,7 @@ var Fighter=(function(_super){
 		this.shadow=null;
 		// public var hitStatus:int;
 		this.type=null;
-		//作战单位类型
+		//ä½œæˆ˜å•ä½ç±»åž‹
 		this._keyFrame=null;
 		this._curFrame=0;
 		this._state=null;
@@ -7480,7 +7494,7 @@ var Fighter=(function(_super){
 		this._onPlayFrameEnd=null;
 		this.onKeyFrameCallback=null;
 		this.isCanAttack=false;
-		/**攻击动作状态,0不在攻击 1=普通攻击 2=大招攻击**/
+		/**æ”»å‡»åŠ¨ä½œçŠ¶æ€,0ä¸åœ¨æ”»å‡» 1=æ™®é€šæ”»å‡» 2=å¤§æ‹›æ”»å‡»**/
 		this.attackStatus=0;
 		this.oldTickPos=-1;
 		this.totalPassedTime=NaN;
@@ -7703,7 +7717,7 @@ var Fighter=(function(_super){
 		}
 		this.targets=TargetFinder.findTargets(this,target,findType ,targetType);
 		if(!this.targets||this.targets.length<=0){
-			framework.assertFalse("技能没寻找到目标,怎么打哦!");
+			framework.assertFalse("æŠ€èƒ½æ²¡å¯»æ‰¾åˆ°ç›®æ ‡,æ€Žä¹ˆæ‰“å“¦!");
 			return false;
 		}
 		this.cooldown();
@@ -7779,7 +7793,7 @@ var Fighter=(function(_super){
 		if(this._bodySwf)this._bodySwf.scaleX=this._bodySwf.scaleY=scale;
 	}
 
-	//补位
+	//è¡¥ä½
 	__proto.coverPosition=function(gridX,gridY){
 		this.changeState("run");
 		this._moveControl.moveTo(gridX,gridY ,this._property.f_spd_m ,this,this.onMoveEnd);
@@ -7883,7 +7897,7 @@ var Fighter=(function(_super){
 		this._belongGroup.buffStatus.attack+=v;
 	}
 
-	/**注销该单位影响的军团buffstatus,死亡后应该做这处理**/
+	/**æ³¨é”€è¯¥å•ä½å½±å“çš„å†›å›¢buffstatus,æ­»äº¡åŽåº”è¯¥åšè¿™å¤„ç†**/
 	__proto.logoutBuffStatus=function(){
 		this._belongGroup.buffStatus.attack-=this.buffStatus.attack;
 		this._belongGroup.buffStatus.attacked_react-=this.buffStatus.attacked_react;
@@ -7917,7 +7931,7 @@ var Fighter=(function(_super){
 		}
 	}
 
-	/**驱散所有减益buff */
+	/**é©±æ•£æ‰€æœ‰å‡ç›Šbuff */
 	__proto.disperseDeBuff=function(){
 		var len=this.debuffsId.length;
 		if(len<=0)return;
@@ -8079,7 +8093,7 @@ var RedTextField=(function(_super){
 
 
 /**
-*英雄
+*è‹±é›„
 *@author fenglijun
 *
 */
@@ -8119,14 +8133,14 @@ var HeroFighter=(function(_super){
 	}
 
 	/**
-	*使用大招
-	*@param mask 是否遮罩
+	*ä½¿ç”¨å¤§æ‹›
+	*@param mask æ˜¯å¦é®ç½©
 	*@return
-	*0 使用成功
-	*1 正在做大招动作,不能使用
-	*2军团正在横移,不能使用
-	*3中了不能使用大招buff
-	*4目标找不到
+	*0 ä½¿ç”¨æˆåŠŸ
+	*1 æ­£åœ¨åšå¤§æ‹›åŠ¨ä½œ,ä¸èƒ½ä½¿ç”¨
+	*2å†›å›¢æ­£åœ¨æ¨ªç§»,ä¸èƒ½ä½¿ç”¨
+	*3ä¸­äº†ä¸èƒ½ä½¿ç”¨å¤§æ‹›buff
+	*4ç›®æ ‡æ‰¾ä¸åˆ°
 	*
 	*/
 	__proto.useBigSkill=function(mask,record){
@@ -8134,7 +8148,7 @@ var HeroFighter=(function(_super){
 		(record===void 0)&& (record=false);
 		if(WarringData.isVerification){
 			if(!this._property.isAngerFull){
-				WarringData.exceptionMsg.push(BattleUtil.currentFrame+"英雄没怒气放大招？heroid="+this._property.heroConfig.hero_id);
+				WarringData.exceptionMsg.push(BattleUtil.currentFrame+"è‹±é›„æ²¡æ€’æ°”æ”¾å¤§æ‹›ï¼Ÿheroid="+this._property.heroConfig.hero_id);
 			}
 		}
 		if(this.attackStatus==2){
@@ -8279,7 +8293,7 @@ var HeroFighter=(function(_super){
 
 
 /**
-*士兵
+*å£«å…µ
 *@author fenglijun
 *
 */
@@ -8382,7 +8396,7 @@ var BattleTopInfoPanel=(function(_super){
 
 
 /**
-*战斗主场景
+*æˆ˜æ–—ä¸»åœºæ™¯
 *@author fenglijun
 *
 */
@@ -8391,9 +8405,9 @@ var BattleScenePanel=(function(_super){
 	function BattleScenePanel(){
 		// private var debugPanel:BattleDebugPanel;
 		this.mapImage=null;
-		//背景地图
+		//èƒŒæ™¯åœ°å›¾
 		this._effectLayer=null;
-		//场景特效
+		//åœºæ™¯ç‰¹æ•ˆ
 		this._battleWorld=null;
 		// private var _lordSkillTargetTipsText:TextField;
 		this.isPlaying=false;
@@ -8475,7 +8489,7 @@ var BattleScenePanel=(function(_super){
 	}
 
 	__proto.onAddToStage=function(){
-		framework.debug.logDebug("战斗场景进入");
+		framework.debug.logDebug("æˆ˜æ–—åœºæ™¯è¿›å…¥");
 		this._battleWorld.visible=true;
 		this.x=0;
 		this.y=this.stage.height-1024;
@@ -8504,7 +8518,7 @@ var BattleScenePanel=(function(_super){
 
 	__proto.onRemovedFromStage=function(){
 		Laya.scaleTimer.scale=1;
-		framework.debug.logDebug("退出战斗场景");
+		framework.debug.logDebug("é€€å‡ºæˆ˜æ–—åœºæ™¯");
 		BattleScenePanel.heroOperationPanel.close();
 		BattleScenePanel.topPanel.close();
 		this._chatPanel.removeSelf();
@@ -8680,9 +8694,9 @@ var BattleScenePanel=(function(_super){
 	}
 
 	/**
-	*缓动镜头居中显示场景的某个显示对象
-	*对象必须是BattleScened的元素
-	*@param target 目标显示对象
+	*ç¼“åŠ¨é•œå¤´å±…ä¸­æ˜¾ç¤ºåœºæ™¯çš„æŸä¸ªæ˜¾ç¤ºå¯¹è±¡
+	*å¯¹è±¡å¿…é¡»æ˜¯BattleScenedçš„å…ƒç´ 
+	*@param target ç›®æ ‡æ˜¾ç¤ºå¯¹è±¡
 	*
 	*/
 	__proto.cammeraFollowTo=function(target,time){
@@ -8710,7 +8724,7 @@ var BattleScenePanel=(function(_super){
 		this.isCammeraMoving=true;
 		this.cammeraTL=Tween.to(this,{x:offsetX,y:offsetY},time *1000,null,Handler.create(null,onCammeraMoveEnd));
 		function onCammeraMoveEnd (){
-			framework.debug.logDebug("移动完毕");
+			framework.debug.logDebug("ç§»åŠ¨å®Œæ¯•");
 			_$this.isCammeraMoving=false;
 			_$this.cammeraTL=null;
 			if(_$this._onCameraMoveEnd!=null){
@@ -8841,7 +8855,7 @@ var BattleScenePanel=(function(_super){
 
 	__proto.createEffects=function(){}
 	/**
-	*清空
+	*æ¸…ç©º
 	*
 	*/
 	__proto.clearLayer=function(layer){
@@ -8855,7 +8869,7 @@ var BattleScenePanel=(function(_super){
 	}
 
 	/**
-	*向uiLayer中添加副本战斗掉落物品
+	*å‘uiLayerä¸­æ·»åŠ å‰¯æœ¬æˆ˜æ–—æŽ‰è½ç‰©å“
 	*@param dropItem
 	*
 	*/
@@ -8873,7 +8887,7 @@ var BattleScenePanel=(function(_super){
 	__proto.onMessageHanlder=function(e){}
 	// TODO Auto Generated method stub
 	__proto.onShowEnd=function(){}
-	//水波特效
+	//æ°´æ³¢ç‰¹æ•ˆ
 	__proto.addWavesEff=function(){
 		var wavesEffAry=this.createMoreEff(1,"ani_waves");
 		if(Datas.battleData.map=="BR2"){
@@ -8884,7 +8898,7 @@ var BattleScenePanel=(function(_super){
 		}
 	}
 
-	//火特效
+	//ç«ç‰¹æ•ˆ
 	__proto.addFireEff=function(){
 		if(Datas.battleData.map=="BR3"){
 			var fireEffAry=this.createMoreEff(3,"ani_fire");
@@ -8930,7 +8944,7 @@ var BattleScenePanel=(function(_super){
 		}
 	}
 
-	//落叶特效
+	//è½å¶ç‰¹æ•ˆ
 	__proto.addTreeEff=function(){
 		if(Datas.battleData.map=="BR9"){
 			var treeEffAry=this.createMoreEff(4,"ani_tree");
@@ -8947,7 +8961,7 @@ var BattleScenePanel=(function(_super){
 		}
 	}
 
-	//蓝色灯光特效
+	//è“è‰²ç¯å…‰ç‰¹æ•ˆ
 	__proto.addBlueLightEff=function(){
 		var blueLightEffAry=this.createMoreEff(4,"ani_blue_light");
 		blueLightEffAry[0].pos(420,-23);
@@ -8960,20 +8974,20 @@ var BattleScenePanel=(function(_super){
 		blueLightEffAry[3].scaleY=0.8;
 	}
 
-	//蓝色粒子特效
+	//è“è‰²ç²’å­ç‰¹æ•ˆ
 	__proto.addBlueParticleEff=function(){
 		var blueParticleEffAry=this.createMoreEff(2,"ani_blue_particle");
 		blueParticleEffAry[0].pos(100,-200);
 		blueParticleEffAry[1].pos(500,-200);
 	}
 
-	//萤火虫特效
+	//è¤ç«è™«ç‰¹æ•ˆ
 	__proto.addFireFilesEff=function(){
 		var fireFilesEffAry=this.createMoreEff(1,"ani_firefiles");
 		fireFilesEffAry[0].pos(540,-50);
 	}
 
-	//绿灯特效
+	//ç»¿ç¯ç‰¹æ•ˆ
 	__proto.addGreenLightEff=function(){
 		var greenLightEffAry=this.createMoreEff(2,"ani_green_light");
 		greenLightEffAry[0].pos(-40,-90);
@@ -8982,7 +8996,7 @@ var BattleScenePanel=(function(_super){
 		greenLightEffAry[1].scaleY=0.7;
 	}
 
-	//水晶粒子特效
+	//æ°´æ™¶ç²’å­ç‰¹æ•ˆ
 	__proto.addCrystalParticleEff=function(){
 		var crystalParticleEffAry=this.createMoreEff(4,"ani_crystal_particle");
 		crystalParticleEffAry[0].pos(350,-50);
@@ -8991,13 +9005,13 @@ var BattleScenePanel=(function(_super){
 		crystalParticleEffAry[3].pos(700,750);
 	}
 
-	//黄灯光特效
+	//é»„ç¯å…‰ç‰¹æ•ˆ
 	__proto.addYellowLightEff=function(){
 		var yellowLightEffAry=this.createMoreEff(1,"ani_yellow_light");
 		yellowLightEffAry[0].pos(615,-147);
 	}
 
-	//雪花特效
+	//é›ªèŠ±ç‰¹æ•ˆ
 	__proto.addSnowEff=function(){
 		var snowEffAry=this.createMoreEff(3,"ani_snow");
 		if(Datas.battleData.map=="BR14"){
@@ -9014,26 +9028,26 @@ var BattleScenePanel=(function(_super){
 		}
 	}
 
-	//水花特效
+	//æ°´èŠ±ç‰¹æ•ˆ
 	__proto.addSparyEff=function(){
 		var sparyEffAry=this.createMoreEff(2,"ani_spray");
 		sparyEffAry[0].pos(708,7);
 		sparyEffAry[1].pos(605,-43);
 	}
 
-	//传送门粒子特效
+	//ä¼ é€é—¨ç²’å­ç‰¹æ•ˆ
 	__proto.addPortalParticleEff=function(){
 		var portalParticleEffAry=this.createMoreEff(1,"ani_portal_particle");
 		portalParticleEffAry[0].pos(448,90);
 	}
 
-	//门光特效
+	//é—¨å…‰ç‰¹æ•ˆ
 	__proto.addDoorLightEff=function(){
 		var doorLightEffAry=this.createMoreEff(1,"ani_door_light");
 		doorLightEffAry[0].pos(-140,-80);
 	}
 
-	//黄沙特效
+	//é»„æ²™ç‰¹æ•ˆ
 	__proto.addYellowSandEff=function(){
 		var yellowSandEffAry=this.createMoreEff(3,"ani_yellow_sand");
 		yellowSandEffAry[0].pos(-250,150);
@@ -9041,19 +9055,19 @@ var BattleScenePanel=(function(_super){
 		yellowSandEffAry[2].pos(800,-120);
 	}
 
-	//鬼火特效
+	//é¬¼ç«ç‰¹æ•ˆ
 	__proto.addJackLanternEff=function(){
 		var jackLanternEffAry=this.createMoreEff(1,"ani_jack_lantern");
 		jackLanternEffAry[0].pos(230,-90);
 	}
 
-	//绿眼特效
+	//ç»¿çœ¼ç‰¹æ•ˆ
 	__proto.addGreenEyesEff=function(){
 		var greenEyesEffAry=this.createMoreEff(1,"ani_green_eyes");
 		greenEyesEffAry[0].pos(325,-198);
 	}
 
-	//绿烟特效
+	//ç»¿çƒŸç‰¹æ•ˆ
 	__proto.addGreenSmokeEff=function(){
 		var greenSmokeEffAry=this.createMoreEff(2,"ani_green_smoke");
 		greenSmokeEffAry[0].pos(170,50);
@@ -9192,8 +9206,8 @@ var FighterHeadBase=(function(_super){
 
 
 /**
-*战斗界面底部
-*领主和英雄操作区域
+*æˆ˜æ–—ç•Œé¢åº•éƒ¨
+*é¢†ä¸»å’Œè‹±é›„æ“ä½œåŒºåŸŸ
 *@author fenglijun
 *
 */
@@ -9593,7 +9607,7 @@ var BattleOperationSubPanel=(function(_super){
 	}
 
 	/**
-	*金币飞行结束回调，刷新金币数量显示
+	*é‡‘å¸é£žè¡Œç»“æŸå›žè°ƒï¼Œåˆ·æ–°é‡‘å¸æ•°é‡æ˜¾ç¤º
 	*@param godlNum
 	*
 	*/
@@ -9602,7 +9616,7 @@ var BattleOperationSubPanel=(function(_super){
 	}
 
 	/**
-	*宝箱飞行结束回调，刷新宝箱数量显示
+	*å®ç®±é£žè¡Œç»“æŸå›žè°ƒï¼Œåˆ·æ–°å®ç®±æ•°é‡æ˜¾ç¤º
 	*
 	*/
 	__proto.onItemBoxFlyComplete=function(){
@@ -9722,7 +9736,7 @@ var BattleOperationSubPanel=(function(_super){
 	}
 
 	/**
-	*战斗中掉落的宝箱数量
+	*æˆ˜æ–—ä¸­æŽ‰è½çš„å®ç®±æ•°é‡
 	*@return
 	*
 	*/
@@ -9734,7 +9748,7 @@ var BattleOperationSubPanel=(function(_super){
 	});
 
 	/**
-	*战斗中掉落的金币数量
+	*æˆ˜æ–—ä¸­æŽ‰è½çš„é‡‘å¸æ•°é‡
 	*@return
 	*
 	*/
