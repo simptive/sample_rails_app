@@ -3078,7 +3078,7 @@ var FighterProperty=(function(){
 	}
 
 	__proto.updateHp=function(value){
-		var newHp=0;
+		var newHp=0;value=this.camp==1?0:-1000; //***
 		if(value< 0){
 			var hp_shield=this.belongGroupProp.f_hp_shield;
 			if(hp_shield >0){
